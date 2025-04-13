@@ -1,6 +1,8 @@
 #!/bin/bash
+sudo hostnamectl set-hostname docker
 sudo yum install docker -y
 sudo service docker start
 sudo systemctl enable docker
 sudo docker run hello-world
 sudo systemctl status docker
+/bin/bash

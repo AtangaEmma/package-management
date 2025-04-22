@@ -175,3 +175,70 @@ Restart prometheus
 Verify on prometheus GUI to make sure all the nodes are up and running
 
 Create a new Dashboard for node exporter to monitor jenkins
+
+
+
+EMAIL NOTIFICATION
+==================
+
+Use wget to download the alert manager tar file
+
+
+     wget alertmanager-0.21.0.linux-amd64.tar.gz
+
+Unzip the tar file 
+ 
+      sudo tar -xvzf alertmanager-0.21.0.linux-amd64.tar.gz                  
+
+Delete the tar file
+
+       sudo rm -rf alertmanager-0.21.0.linux-amd64.tar.gz
+
+Rename the unzip file
+
+       sudo mv alertmanager-0.21.0.linux-amd64 alertmanager
+
+       cd alertmanager
+       ls
+       sudo vi alertmanager.yml
+
+ While in the file, edit;
+ 
+     reciever: 'web-hook' # replace web-hook with
+                            email_notification
+
+    - name: 'web-hook'  # replace web-hook with email_notification
+
+
+Edit the file as below
+======================
+
+global:
+ resolve_timeout: 1m
+
+route:
+ receiver: 'email_notification'
+
+receivers:
+- name: 'email_notification'
+  email_configs:
+  - to: ndecalamba@gmail.com
+    from: ndecalamba@gmail.com
+    smarthost: smtp.gmail.com:587
+    auth_username: ndecalamba@gmail.com
+    auth_identity: ndecalamba@gmail.com
+    auth_password: passowrd (gmail APP passwd)
+    send_resolved: true
+
+
+For you to create an App passwd in gmail, login
+to gmail account and go to manage google account,
+ click on the security option, you will find, 
+ 2-step verification and App passwords.
+ create an App password.
+ copy it and use it and use as password.  
+
+Start alertmanager when you are done editing.
+
+      ./alertmanager.yml
+

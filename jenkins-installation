@@ -59,3 +59,21 @@ sudo systemctl start jenkins
 sudo systemctl status jenkins
 echo "end of jenkins installation"
 /bin/bash
+
+
+# Installation on ubuntu
+
+#!/bin/bash
+sudo timedatectl set-timezone America/New_York
+sudo hostnamectl set-hostname jenkins
+sudo apt update
+sudo apt install wget git unzip vim -y
+echo "deb http://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+sudo apt install jenkins -y
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+echo "End of Jenkins installation"

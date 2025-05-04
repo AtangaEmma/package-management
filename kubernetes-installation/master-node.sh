@@ -1,7 +1,30 @@
+ControlNode setup
+-----------------
+
+## Kubernetes Setup Using Kubeadm In AWS EC2 Ubuntu Servers.
+##### Prerequisite
++ AWS Acccount.
++ Create 3 - Ubuntu Servers 
++ 1 Master (4GB RAM , 2 Core)  t2.medium
++ 2 Workers  (1 GB, 1 Core)     t2.micro
++ Create Security Group and open required ports for kubernetes.
+   + Open all port for this illustration
++ Attach Security Group to EC2 Instance/nodes.
+
+## Assign hostname &  login as ‘root’ user because the following set of commands need to be executed with ‘sudo’ permissions.
+```sh
+```
+
+``` sh
+
+
 #!/bin/bash
+# common.sh
+# copy this script and run in all master and worker nodes
 #i1) Switch to root user [ sudo -i]
 
-sudo hostnamectl set-hostname  master
+sudo hostnamectl set-hostname masternode
+#sudo -i
 
 #2) Disable swap & add kernel settings
 
@@ -75,16 +98,16 @@ apt-get install -y apt-transport-https ca-certificates curl
 
 # Download the Google Cloud public signing key:
 
-curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 # Add the Kubernetes apt repository:
 
-echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 # Update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
 
 apt-get update
-apt-get install -y kubelet kubeadm kubectl
+sudo apt install -y kubeadm=1.28.1-1.1 kubelet=1.28.1-1.1 kubectl=1.28.1-1.1
 
 # apt-mark hold will prevent the package from being automatically upgraded or removed.
 
@@ -96,8 +119,20 @@ systemctl daemon-reload
 systemctl start kubelet
 systemctl enable kubelet.service
 
-# initialise the control plane
-kubeadm init 
 
-su - ubuntu
-~
+
+# Run the below command to initialize the masterNode
+
+sudo kubeadm init
+
+# on your terminal
+# exit as root user
+# run the below command to authenticate yourself as normal user
+
+mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+  # run the below command to start the masternode
+
+  kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml

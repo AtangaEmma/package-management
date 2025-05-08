@@ -2,6 +2,8 @@
 #i1) Switch to root user [ sudo -i]
 # Run this command on the master node to obtain a join token {kubeadm token create --print-join-command}.
 # Add the join token below the installation script to join the workernode to the master.
+# Run below command on master to get join token
+# kubeadm token create --print-join-command --> copy this command and run on master 
 
 sudo hostnamectl set-hostname  node1
 

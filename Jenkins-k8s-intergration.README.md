@@ -83,13 +83,13 @@ vi into bind.yml , paste the file and execute.
 
 **For Jenkins to be able to connect to kubernetes, you need to create a token that will be use for authentication. Use the below file for that.**
 
-apiVersion: v1
-kind: Secret
-type: kubernetes.io/service-account-token
-metadata:
-  name: mysecretname
-  annotations:
-    kubernetes.io/service-account.name: jenkins
+       apiVersion: v1
+       kind: Secret
+       type: kubernetes.io/service-account-token
+       metadata:
+         name: mysecretname
+         annotations:
+           kubernetes.io/service-account.name: jenkins
 
 vi secret.yml, paste the file and execute.
 

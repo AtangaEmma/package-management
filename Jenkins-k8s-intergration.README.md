@@ -18,44 +18,44 @@ first create the name space (webapps)
 
 **The next thing is to create a role with some permissions**
 
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: app-role
-  namespace: webapps
-rules:
-  - apiGroups:
-        - ""
-        - apps
-        - autoscaling
-        - batch
-        - extensions
-        - policy
-        - rbac.authorization.k8s.io
-    resources:
-      - pods
-      - secrets
-      - componentstatuses
-      - configmaps
-      - daemonsets
-      - deployments
-      - events
-      - endpoints
-      - horizontalpodautoscalers
-      - ingress
-      - jobs
-      - limitranges
-      - namespaces
-      - nodes
-      - pods
-      - persistentvolumes
-      - persistentvolumeclaims
-      - resourcequotas
-      - replicasets
-      - replicationcontrollers
-      - serviceaccounts
-      - services
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+       apiVersion: rbac.authorization.k8s.io/v1
+       kind: Role
+       metadata:
+         name: app-role
+         namespace: webapps
+       rules:
+         - apiGroups:
+               - ""
+               - apps
+               - autoscaling
+               - batch
+               - extensions
+               - policy
+               - rbac.authorization.k8s.io
+           resources:
+             - pods
+             - secrets
+             - componentstatuses
+             - configmaps
+             - daemonsets
+             - deployments
+             - events
+             - endpoints
+             - horizontalpodautoscalers
+             - ingress
+             - jobs
+             - limitranges
+             - namespaces
+             - nodes
+             - pods
+             - persistentvolumes
+             - persistentvolumeclaims
+             - resourcequotas
+             - replicasets
+             - replicationcontrollers
+             - serviceaccounts
+             - services
+           verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 
 vi into role.yml and paste the above yml file for roles settings.
 

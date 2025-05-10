@@ -2,15 +2,15 @@ Deployment to kubernetes
 -
 **create service account in master node**
 
-apiVersion: v1
+   apiVersion: v1
 
-kind: ServiceAccount
+   kind: ServiceAccount
 
-metadata:
+   metadata:
   
-  name: jenkins
+     name: jenkins
   
-  namespace: webapps
+     namespace: webapps
 
 Vi into svc.yml and paste the above content 
 

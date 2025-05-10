@@ -63,19 +63,19 @@ vi into role.yml and paste the above yml file for roles settings.
 
 **Then assign or bind the role to the service account by using the below yml file.**
 
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: app-rolebinding
-  namespace: webapps 
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: app-role 
-subjects:
-- namespace: webapps 
-  kind: ServiceAccount
-  name: jenkins      
+       apiVersion: rbac.authorization.k8s.io/v1
+       kind: RoleBinding
+       metadata:
+         name: app-rolebinding
+         namespace: webapps 
+       roleRef:
+         apiGroup: rbac.authorization.k8s.io
+         kind: Role
+         name: app-role 
+       subjects:
+       - namespace: webapps 
+         kind: ServiceAccount
+         name: jenkins      
 
 vi into bind.yml , paste the file and execute.
 

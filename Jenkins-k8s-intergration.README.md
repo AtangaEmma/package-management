@@ -1,7 +1,6 @@
 Deployment to kubernetes
 -
-
-- create service account in master node
+**create service account in master node**
 
 apiVersion: v1
 kind: ServiceAccount

@@ -48,7 +48,7 @@ now that you are sure that java is installed, you can now move
 ahead to download the maven software from the internet by running 
 the command;
 
-              sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.zip
+              sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.zip
 
 After you have run this command, check if the maven software was downloaded by
 running the command;
@@ -58,7 +58,7 @@ running the command;
 You will see a downloaded .zip file in a red colouration, 
 Extract the .zip file by running the command;
 
-                sudo unzip apache-maven-3.9.4-bin.zip
+                sudo unzip apache-maven-3.9.11-bin.zip
 
 After running the above command, check if the file has been extracted by running
 
@@ -68,7 +68,7 @@ At this point, you will see that we have the .zip file in a red colouration and
 the extracted file in blue colouration, since you have two same files, you will no 
 more be needing the .zip file, so to delete it, run the command bellow,
 
-                sudo rm -rf apache-maven-3.9.4-bin.zip
+                sudo rm -rf apache-maven-3.9.11-bin.zip
 
 Check again to be sure that the .zip file was deleted by running,
 
@@ -78,7 +78,7 @@ You will now see that you are having only one file there with a blue colouration
 Rename the file to a more portable name , 
 for example , maven -----> by running the command,
 
-                 sudo mv apache-maven-3.9.4/ maven
+                 sudo mv apache-maven-3.9.11/ maven
 
 Now that you have downloaded and extracted maven, you shoud know
 that maven has a home directory, and for maven to do a build with the
@@ -297,7 +297,7 @@ git --version
 cd /opt
 sudo yum install wget nano tree unzip git-all -y
 sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
-sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.zip
+sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.zip
 sudo unzip apache-maven-3.9.4-bin.zip
 sudo rm -rf apache-maven-3.9.4-bin.zip
 sudo mv apache-maven-3.9.4/ maven
@@ -346,6 +346,7 @@ echo "export MAVEN_HOME=/usr/share/maven" >> ~/.bashrc
 echo "export PATH=${M2_HOME}/bin:$PATH}" >> ~/.bashrc
 sudo hostnamectl set-hostname maven
 sudo su - ec2-user
+
 
 
 

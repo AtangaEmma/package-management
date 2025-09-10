@@ -11,7 +11,7 @@ sudo echo "nexus ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/nexus
 
 cd /opt
 sudo yum install wget git nano unzip -y
-sudo yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
+sudo yum install java-11 -y
 sudo wget http://download.sonatype.com/nexus/3/nexus-3.15.2-01-unix.tar.gz 
 sudo tar -zxvf nexus-3.15.2-01-unix.tar.gz
 sudo mv /opt/nexus-3.15.2-01 /opt/nexus
@@ -74,5 +74,6 @@ sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
 sudo su - nexus -c "/opt/nexus/bin/nexus enable"
 sudo su - nexus -c "/opt/nexus/bin/nexus start"
 sudo su - nexus -c "/opt/nexus/bin/nexus status"
+
 
 

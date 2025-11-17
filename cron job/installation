@@ -1,0 +1,38 @@
+Installation in Ubuntu
+    
+    #!/bin/bash
+    sudo apt updates
+    sudo apt install cron
+    sudo systemctl start cron
+    sudo systemctl enable cron
+
+
+Intallation in RedHat
+    
+    #!/bin/bash
+    sudo yum install cronie
+    sudo systemctl start crond
+    sudo systemctl enable crond
+
+EDITING CRON TABLE
+
+    crontable -e
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

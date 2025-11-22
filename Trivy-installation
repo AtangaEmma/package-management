@@ -17,17 +17,21 @@ trivy --version
 
 
 
-ON AMAZON LINUX 2
-=================
+
+ON AMAZON LINUX 2023
+====================
 
 #!/bin/bash
-sudo yum update -y
-sudo yum install -y git wget
-# Install Trivy
-TRIVY_VERSION=0.39.0 # Set to the desired version
-sudo wget https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz
-sudo tar -zxvf trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz
-sudo mv trivy /usr/local/bin/
-
-# Verify the installation
-trivy --version
+rpm -ivh https://github.com/aquasecurity/trivy/releases/download/v0.65.0/trivy_0.65.0_Linux-64bit.rpm
+# or
+cat << EOF | sudo tee -a /etc/yum.repos.d/trivy.repo
+[trivy]
+name=Trivy repository
+baseurl=https://aquasecurity.github.io/trivy-repo/rpm/releases/\$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://aquasecurity.github.io/trivy-repo/rpm/public.key
+EOF
+sudo yum -y update
+sudo yum -y install trivy  
+sudo trivy -v

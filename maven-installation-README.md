@@ -3,9 +3,13 @@ SIMPLIFIED STEPS TO FOLLOW WHEN INSTALLING MAVEN
 ================================================
 
 Login into your AWS account
+
 Launch an EC2 T2.medium instance with 4GB of RAM
+
 Create a security group and open port 22
+
 Attach the security group to the instance
+
 
 Run the command bellow to change the hostname of your server to maven
 
@@ -346,6 +350,7 @@ echo "export MAVEN_HOME=/usr/share/maven" >> ~/.bashrc
 echo "export PATH=${M2_HOME}/bin:$PATH}" >> ~/.bashrc
 sudo hostnamectl set-hostname maven
 sudo su - ec2-user
+
 
 
 
